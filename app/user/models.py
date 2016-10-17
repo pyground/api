@@ -1,9 +1,13 @@
-import Document, StringField, BooleanField from mongoengine
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from mongoengine import Document, StringField, BooleanField, FileField
+import settings
+
 
 class User(Document):
-    nickname = StringField(required=true, min=8, max=16)
+    nickname = StringField(required=True, min=8, max=16)
     name = StringField(max=126)
-    password = StringField(required=true, min=8, max=16)
-    email = StringField(required=true, max=128)
-    active = BooleanField(default=false)
-    photo = StringField(default=SETTINGS.DEFAULT_PHOTO)
+    password = StringField(required=True, min=8, max=16)
+    email = StringField(required=True, max=128)
+    active = BooleanField(default=False)
+    photo = FileField(default=settings.DEFAULT_PHOTO)
