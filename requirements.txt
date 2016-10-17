@@ -1,6 +1,4 @@
 mongoengine
 redis
-pytest
-pytest-cov
-coveralls
 tornado
+-e git://github.com/pyground/pynterpreter.git@master#egg=pynterpreter.git
