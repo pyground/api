@@ -1,6 +1,6 @@
-flask
 mongoengine
 redis
 pytest
 pytest-cov
 coveralls
+tornado
