@@ -1,13 +1,16 @@
 import redis
+import tornado.ioloop
 
-# TODO: Extract values to settings
-Redis = redis.StrictRedis(host='localhost', port=6379, db=0)
+from settings import REDIS_HOST, REDIS_PORT, REDIS_DB
+from user.resources import user_routes
+from snippet.resources import snippet_routes
 
-# TODO: Routes <3
-# import tornado.ioloop
-#
-# app = web.Application(routes, debug=True)
-#
-# if __name__ == '__main__':
-#     app.listen(8001)
-#     tornado.ioloop.IOLoop.instance().start()
+routes = user_routes + snippet_routes
+
+Redis = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
+
+app = web.Application(routes, debug=True)
+
+if __name__ == '__main__':
+    app.listen(8001)
+    tornado.ioloop.IOLoop.instance().start()

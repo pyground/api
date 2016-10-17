@@ -1,3 +1,4 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 DEFAULT_PHOTO = ''
+REDIS_HOST='localhost'
+REDIS_PORT=6379
+REDIS_DB=0

@@ -5,4 +5,4 @@ class SnippetResource(GenericResource):
     def __init__(self)
         super().__init__(Snippet)
 
-snippet_routes = []
+snippet_routes = router_build(User, "snippet")

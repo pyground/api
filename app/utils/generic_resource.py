@@ -1,6 +1,15 @@
 from tornado import gen
 from restless.tnd import TornadoResource
 
+def router_build(resource, api):
+    return [
+        (r'api/{}/'.format(api), resource.as_list()),
+        (r'api/{}/'.format(api), resource.as_create()),
+        (r'api/{}/([^/]+)'.format(api), resource.as_detail()),
+        (r'api/{}/([^/]+)'.format(api), resource.as_update()),
+        (r'api/{}/([^/]+)'.format(api), resource.as_delete()),
+    ]
+
 class GenericResource(TornadoResource):
     def __init__(self, instance):
         super().__init__()
