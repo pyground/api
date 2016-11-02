@@ -1,20 +1,17 @@
-from utils.generic_resource import GenericResource
+from utils.generic_resource import GenericResource, router_build
 from snippet.models import Snippet
-from pynterpreter import Pynterpreter
+from core.pynterpreter import Pynterpreter
 from tornado import gen
 
-class SnippetResource(GenericResource):
-    def __init__(self):
-        super().__init__(Snippet)
-
+class SnippetResource():
     @gen.coroutine
-    def run_code(self):
+    def detail(self):
         pntr = Pynterpreter()
 
         raise gen.Return({
             "response": pntr.run_as_module(self.request.GET["code"])
         })
 
-snippet_additional_route = (r'api/snippet/run', SnippetResource.as_detail(), SnippetResource.run_code);
+snippet_additional_route = (r'api/run_snippet', SnippetResource());
 
-snippet_routes = router_build(User, "snippet").append(snippet_additional_route)
+snippet_routes = router_build(GenericResource(Snippet), "snippet").append(snippet_additional_route)

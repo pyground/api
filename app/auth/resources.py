@@ -2,7 +2,7 @@ import uuid
 
 from app import Redis
 from tornado import gen
-from restless.tnd import TornadoResource
+from restkiss.tnd import TornadoResource
 
 class AuthResource(TornadoResource)
     @gen.coroutine

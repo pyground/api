@@ -1,13 +1,9 @@
 from tornado import gen
-from restless.tnd import TornadoResource
+from restkiss.tnd import TornadoResource
 
 def router_build(resource, api):
     return [
-        (r'api/{}/'.format(api), resource.as_list()),
-        (r'api/{}/'.format(api), resource.as_create()),
-        (r'api/{}/([^/]+)'.format(api), resource.as_detail()),
-        (r'api/{}/([^/]+)'.format(api), resource.as_update()),
-        (r'api/{}/([^/]+)'.format(api), resource.as_delete()),
+        (r'api/{}/'.format(api), resource)
     ]
 
 class GenericResource(TornadoResource):
@@ -37,7 +33,7 @@ class GenericResource(TornadoResource):
     def update(self, pk):
         user = self._get_one(pk)
 
-        for key, value in self.request.GET
+        for key, value in self.request.GET:
             user[key] = value
 
         raise gen.Return(user.save())

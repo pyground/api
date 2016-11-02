@@ -1,4 +1,5 @@
 mongoengine
 redis
 tornado
+restkiss
 -e git://github.com/pyground/pynterpreter.git@master#egg=pynterpreter.git
